@@ -1,13 +1,21 @@
-import { useContext, useState } from "react";
+import { ChangeEvent, useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/Auth/AuthContext";
 
 export const Login = () => {
   const auth = useContext(AuthContext);
+  const navigate = useNavigate();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const navigate = useNavigate();
+  const handleEmailInput = (event: ChangeEvent<HTMLInputElement>) => {
+    setEmail(event.target.value);
+  };
+
+  const handlePasswordInput = (event: ChangeEvent<HTMLInputElement>) => {
+    setPassword(event.target.value);
+  };
 
   const handleLogin = async () => {
     if (email && password) {
@@ -15,7 +23,7 @@ export const Login = () => {
       if (isLogged) {
         navigate("/");
       } else {
-        alert("Login Fail!!");
+        alert("Login Fail!");
       }
     }
   };
@@ -23,21 +31,18 @@ export const Login = () => {
   return (
     <div>
       <h2>Closed Page</h2>
+
       <input
         type="text"
-        name=""
-        id=""
         value={email}
+        onChange={handleEmailInput}
         placeholder="Type your e-mail"
-        onChange={(e) => setEmail(e.target.value)}
       />
       <input
         type="password"
-        name=""
-        id=""
         value={password}
+        onChange={handlePasswordInput}
         placeholder="Type your password"
-        onChange={(e) => setPassword(e.target.value)}
       />
       <button onClick={handleLogin}>Login</button>
     </div>
