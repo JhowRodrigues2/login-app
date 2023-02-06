@@ -10,7 +10,13 @@ export const useApi = ()=>({
         return res.data
     },
     signin : async(email:string, password:string)=>{
+        return{
+            user:{id:3, name:'Jhow', email:'jhowrdev@gmail.com'},
+            token:'123456789'
+        }
+        
         const res = await api.post('/signin', {email, password})
+    
         return res.data
     },
     logout: async()=>{
