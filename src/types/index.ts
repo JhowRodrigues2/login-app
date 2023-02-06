@@ -7,5 +7,5 @@ export type User = {
 export type AuthContextType = {
     user: User | null
     signin: (email:string, password:string)=> Promise<boolean>
-    singout : ()=> void
+    signout : ()=> void
 }  
