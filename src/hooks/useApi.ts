@@ -1,26 +1,28 @@
-import axios from 'axios'
+import axios from 'axios';
 
 const api = axios.create({
-    baseURL:process.env.REACT_APP
-})
+    baseURL: process.env.REACT_APP_API
+});
 
-export const useApi = ()=>({
-    validateToken: async(token:string)=>{
-        const res = await api.post('/validade',{token})
-        return res.data
+export const useApi = () => ({
+    validateToken: async (token: string) => {
+        return {
+            user: { id: 3, name: 'José', email: 'jose@gmail.com' }
+        };
+        const response = await api.post('/validate', { token });
+        return response.data;
     },
-    signin : async(email:string, password:string)=>{
-        return{
-            user:{id:3, name:'Jhow', email:'jhowrdev@gmail.com'},
-            token:'123456789'
-        }
-        
-        const res = await api.post('/signin', {email, password})
-    
-        return res.data
+    signin: async (email: string, password: string) => {
+        return {
+            user: { id: 3, name: 'José', email: 'jose@gmail.com' },
+            token: '123456789'
+        };
+        const response = await api.post('/signin', { email, password });
+        return response.data;
     },
-    logout: async()=>{
-        const res = await api.post('/logout')
-        return res.data
+    logout: async () => {
+        return { status: true };
+        const response = await api.post('/logout');
+        return response.data;
     }
-})
+});

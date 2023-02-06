@@ -7,14 +7,19 @@ import { useContext } from "react";
 import { AuthContext } from "./contexts/Auth/AuthContext";
 function App() {
   const auth = useContext(AuthContext);
+
+  const handleLogout = async () => {
+    await auth.signout();
+    window.location.href = window.location.href;
+  };
   return (
     <div className="App">
       <header>
-        <h1>Header do Site</h1>
+        <h1>Header do site</h1>
         <nav>
           <Link to="/">Home</Link>
-          <Link to="/private">Private Page</Link>
-          {auth.user && <a href="javascript;;">Sair</a>}
+          <Link to="/private">Página Privada</Link>
+          {auth.user && <button onClick={handleLogout}>Sair</button>}
         </nav>
       </header>
       <hr />
@@ -24,7 +29,7 @@ function App() {
           path="/private"
           element={
             <RequireAuth>
-              <Private></Private>
+              <Private />
             </RequireAuth>
           }
         />
