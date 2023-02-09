@@ -1,5 +1,8 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins");
+
 .App {
   text-align: center;
+  min-width: 100%;
 }
 nav a {
   color: #000;
@@ -9,4 +12,28 @@ nav a {
 
 nav a:hover {
   text-decoration: none;
+}
+
+/* BASIC */
+
+html {
+  background-color: #56baed;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  height: 100vh;
+}
+
+header {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+}
+
+header a {
+  color: #fff;
 }

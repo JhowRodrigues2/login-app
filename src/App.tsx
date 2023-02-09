@@ -5,7 +5,6 @@ import { Home } from "./pages/Home";
 import { Private } from "./pages/Private";
 import { RequireAuth } from "./contexts/Auth/RequireAuth";
 import { AuthContext } from "./contexts/Auth/AuthContext";
-
 function App() {
   const auth = useContext(AuthContext);
 
@@ -17,14 +16,14 @@ function App() {
   return (
     <div className="App">
       <header>
-        <h1>Header site</h1>
+        <h1>Header</h1>
         <nav>
           <Link to="/">Home</Link>
-          <Link to="/private">Private Page</Link>
+          <Link to="/private">Private Router</Link>
           {auth.user && <button onClick={handleLogout}>Sair</button>}
         </nav>
       </header>
-      <hr />
+
       <Routes>
         <Route path="/" element={<Home />} />
         <Route
